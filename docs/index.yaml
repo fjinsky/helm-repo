@@ -3,7 +3,7 @@ entries:
   app:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-06-16T17:56:15.802016831+08:00"
+    created: "2024-06-16T18:29:57.977280477+08:00"
     description: A Helm chart for web
     digest: e111bf0fad0a43639e784a4da14b0140e24a080839727c33e838e0b547ac5ea6
     name: app
@@ -14,7 +14,17 @@ entries:
   wordpress:
   - apiVersion: v2
     appVersion: 6.0.2
-    created: "2024-06-16T17:56:15.802339086+08:00"
+    created: "2024-06-16T18:29:57.977934124+08:00"
+    description: A Helm chart for Wordpress
+    digest: 6328acabdcf20ac662a4328d003a49380a62c7018720f7156dd67bf16f1ee949
+    name: wordpress
+    type: application
+    urls:
+    - wordpress-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 6.0.2
+    created: "2024-06-16T18:29:57.977623401+08:00"
     description: A Helm chart for Wordpress
     digest: 112d6152078264100f4e2c9386dfae92ab2efddbe37c7ea7f0505bdf819c2c69
     name: wordpress
@@ -22,4 +32,4 @@ entries:
     urls:
     - wordpress-1.0.0.tgz
     version: 1.0.0
-generated: "2024-06-16T17:56:15.801540933+08:00"
+generated: "2024-06-16T18:29:57.977012376+08:00"
