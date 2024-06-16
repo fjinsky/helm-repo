@@ -1,0 +1,124 @@
+# 名称
+nameOverride: ""
+fullnameOverride: ""
+
+#名称空间
+namespace: ""
+
+# Pod副本数
+replicas: 3
+
+# Pod镜像
+image:
+  name: hub.anson.cc/library/wordpress
+  tags: 6.0.2
+imagePullPolicy: ""
+
+# Pod的env
+env:
+  - name: WORDPRESS_DB_HOST
+    value: "blog-mysql.default.svc.cluster.local"
+  - name: WORDPRESS_DB_USER
+    value: "root"
+  - name: WORDPRESS_DB_PASSWORD
+    value: "Y739LFaI9z"
+
+# Pod的资源限制
+resources:
+  limits:
+    memory: 200Mi
+  requests:
+    memory: 200Mi
+
+
+# 节点选择器
+nodeSelector: {}
+# disktype: ssd
+
+# Pod亲和
+affinity: {}
+  #  podAffinity:
+  #    preferredDuringSchedulingIgnoredDuringExecution:
+  #    - labelSelector:
+  #        matchExpressions:
+  #        - key: app
+  #          operator: In
+  #          values: ["web"]
+  #      topologyKey: kubernetes.io/hostname
+
+# Pod容忍度
+tolerations: {}
+  #  - key: "node-role.kubernetes.io/control-plane"
+  #    operator: "Exists"
+  #    effect: "NoSchedule"
+  #  - key: "node-role.kubernetes.io/master"
+  #    operator: "Exists"
+  #    effect: "NoSchedule"
+
+
+startupProbe: {}
+#  httpGet:
+#    path: /
+#    port: 80
+#  initialDelaySeconds: 200
+#  periodSeconds: 10
+#  timeoutSeconds: 10
+#  failureThreshold: 3
+#  successThreshold: 1
+
+readinessProbe: {}
+#  httpGet:
+#    path: /
+#    port: 80
+#  initialDelaySeconds: 200
+#  periodSeconds: 10
+#  timeoutSeconds: 15
+#  failureThreshold: 3
+
+livenessProbe: {}
+#  httpGet:
+#    path: /
+#    port: 80
+#  initialDelaySeconds: 200
+#  periodSeconds: 10
+#  timeoutSeconds: 15
+#  failureThreshold: 3
+
+# pvc
+persistence:
+  enabled: true
+  claimName: ""   # 系统中已经存在的pvc名称,这个配置的话，后续的则不用配置
+   
+  # 使用什么动态供给 
+  storageClassName: "nfs-provisioner-storage"
+  # pvc访问模式
+  accessModes: "ReadWriteMany"
+  # pvc的大小
+  storage: "10Gi"
+
+# Service网络
+service:
+  # Service的类型 [ ClusterIP | NodePort ]
+  type: ""
+  port: 80
+  containerPort: 80
+  # 当类型为NodePort时，可以通过nodeport定义节点开放的端口
+  nodeport: ""
+
+
+# tls
+tls:
+  enabled: true
+  cretpath: "ssl/server.crt"
+  keypath: "ssl/server.key"
+
+# Ingress
+ingress:
+  enabled: true
+  ingressClassName: "nginx"
+  hosts: "helm.anson.cc"
+
+  # ingress的注解
+  annotations: {}
+    #kubernetes.io/ingress.class: nginx
+    #kubernetes.io/tls-acme: "true"

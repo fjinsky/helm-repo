@@ -1,0 +1,11 @@
+# Pod的副本数
+replicaCount: 5
+# Pod的镜像及Tags
+image:
+  name: hub.anson.cc/study/demoapp
+  tags: "v1.0"
+imagePullPolicy: ""
+service:
+  port: 80
+  containerPort: 80
+version: 1.2.3
